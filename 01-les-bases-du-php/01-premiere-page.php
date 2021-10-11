@@ -10,6 +10,10 @@
 
 <body>
     <h2>Première page en PHP</h2>
+
+    <?php
+    echo '<h3>Bonjour tout le monde !</h3>';
+    ?>
 </body>
 
 </html>
