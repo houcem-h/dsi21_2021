@@ -13,6 +13,7 @@
 
     <?php
     echo '<h3>Bonjour tout le monde !</h3>';
+    echo '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum dolores rem voluptatibus beatae provident ea ab exercitationem autem! Ab maxime temporibus voluptates modi nulla neque nesciunt architecto delectus possimus similique?</p>';
     ?>
 </body>
 
