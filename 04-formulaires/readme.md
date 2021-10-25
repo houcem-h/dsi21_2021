@@ -3,7 +3,7 @@
 ## Paramètre 1
 On doit ajouter un button de type `submit`
 ```php
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit">Submit</button>
 ```
 
 ## Paramètre 2
