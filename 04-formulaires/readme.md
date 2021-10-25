@@ -1,4 +1,4 @@
-# Paramétrer un formulaire pour l'uiliser en `PHP`
+# Paramétrer un formulaire pour l'utiliser en `PHP`
 
 ## Paramètre 1
 On doit ajouter un button de type `submit`
