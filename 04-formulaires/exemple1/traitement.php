@@ -14,7 +14,7 @@
         <h2>Données saisies par l'utilisateur</h2>
         <ul class="list-group">
             <?php foreach ($_POST as $key => $value) : ?>
-                <li class="list-group-item"><?php echo $key . ": " . $value ?></li>
+                <li class="list-group-item"><?= $key . ": " . $value ?></li>
             <?php endforeach; ?>
         </ul>
     </div>
