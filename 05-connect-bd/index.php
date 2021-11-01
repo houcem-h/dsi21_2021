@@ -12,7 +12,7 @@
 <body>
     <?php
     $pdo = new PDO('mysql:host=localhost;dbname=dsi21_todo_app', 'root', '');
-    $query = $pdo->query("SELECT * FROM todos");
+    $query = $pdo->query("SELECT * FROM todos ORDER BY complete, due_date");
     $todos = $query->fetchAll();
     ?>
     <div class="container py-4">
