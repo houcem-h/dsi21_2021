@@ -31,7 +31,7 @@
                         <th><input type="checkbox" <?= $todo['complete'] ? 'checked' : '' ?>></th>
                         <td class="<?= $todo['complete'] ? 'text-decoration-line-through' : '' ?>"><?= $todo['title'] ?></td>
                         <td>
-                            <button class="btn btn-primary">Details</button>
+                            <a href="todo_details.php" class="btn btn-primary">Details</a>
                             <button class="btn btn-warning">Edit</button>
                             <button class="btn btn-danger">Delete</button>
                         </td>
