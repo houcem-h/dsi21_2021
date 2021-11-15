@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <title>Gestion des tâches</title>
 </head>
 
@@ -16,11 +17,11 @@
     $todos = $query->fetchAll();
     ?>
     <div class="container py-4">
-        <h1>Liste des tâches</h1>
+        <h1><i class="bi bi-list-task"></i> Liste des tâches</h1>
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Complete</th>
+                    <th scope="col"><i class="bi bi-check2-square"></i></th>
                     <th scope="col">Title</th>
                     <th scope="col">Operations</th>
                 </tr>
@@ -31,9 +32,9 @@
                         <th><input type="checkbox" <?= $todo['complete'] ? 'checked' : '' ?>></th>
                         <td class="<?= $todo['complete'] ? 'text-decoration-line-through' : '' ?>"><?= $todo['title'] ?></td>
                         <td>
-                            <a href="todo_details.php" class="btn btn-primary">Details</a>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <a href="todo_details.php" class="btn btn-primary"><i class="bi bi-info-circle"></i></a>
+                            <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
