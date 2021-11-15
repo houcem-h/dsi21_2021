@@ -14,7 +14,7 @@
     <?php
     $pdo = new PDO('mysql:host=localhost;dbname=dsi21_todo_app', 'root', '');
     $query = $pdo->query("SELECT * FROM todos ORDER BY complete, due_date");
-    $todos = $query->fetchAll();
+    $todos = $query->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <div class="container py-4">
         <h1><i class="bi bi-list-task"></i> Liste des tâches</h1>
@@ -32,7 +32,7 @@
                         <th><input type="checkbox" <?= $todo['complete'] ? 'checked' : '' ?>></th>
                         <td class="<?= $todo['complete'] ? 'text-decoration-line-through' : '' ?>"><?= $todo['title'] ?></td>
                         <td>
-                            <a href="todo_details.php" class="btn btn-primary"><i class="bi bi-info-circle"></i></a>
+                            <a href="todo_details.php?id=<?= $todo['id'] ?>" class="btn btn-primary"><i class="bi bi-info-circle"></i></a>
                             <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
                             <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
