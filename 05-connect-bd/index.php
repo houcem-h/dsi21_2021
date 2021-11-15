@@ -12,9 +12,9 @@
 
 <body>
     <?php
-    $pdo = new PDO('mysql:host=localhost;dbname=dsi21_todo_app', 'root', '');
+    include './dbconnect.php';
     $query = $pdo->query("SELECT * FROM todos ORDER BY complete, due_date");
-    $todos = $query->fetchAll(PDO::FETCH_ASSOC);
+    $todos = $query->fetchAll();
     ?>
     <div class="container py-4">
         <h1><i class="bi bi-list-task"></i> Liste des tâches</h1>
