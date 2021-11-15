@@ -1,6 +1,7 @@
 <?php
     include './dbconnect.php';
-    $query = $pdo->query('SELECT * FROM todos WHERE id='.$_GET['id']);
+    $query = $pdo->prepare('SELECT * FROM todos WHERE id= ?');
+    $query->execute([$_GET['id']]);
     $todo = $query->fetch();
 
     $template = 'todo_details';

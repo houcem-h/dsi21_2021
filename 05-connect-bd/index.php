@@ -1,7 +1,8 @@
 <?php
     include './dbconnect.php';
 
-    $query = $pdo->query("SELECT * FROM todos ORDER BY complete, due_date");
+    $query = $pdo->prepare("SELECT * FROM todos ORDER BY complete, due_date");
+    $query->execute();
     $todos = $query->fetchAll();
 
     $template = 'index';
