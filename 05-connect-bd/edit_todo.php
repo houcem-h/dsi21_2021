@@ -4,6 +4,8 @@ if (!array_key_exists('id', $_GET) or !ctype_digit($_GET['id'])) {
     exit();
 }
 
+$errors = [];
+
 include './dbconnect.php';
 $query = $pdo->prepare('SELECT * FROM todos WHERE id= ?');
 $query->execute([$_GET['id']]);
