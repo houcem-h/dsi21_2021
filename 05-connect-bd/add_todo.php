@@ -4,6 +4,9 @@ include './dbconnect.php';
 include './utilities.php';
 
 $errors = [];
+$title = '';
+$description = '';
+$due_date = '';
 
 if (!empty($_POST)) {
     $title = checkData($_POST['title']);
