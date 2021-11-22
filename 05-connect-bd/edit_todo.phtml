@@ -7,7 +7,8 @@
     </div>
 </div>
 
-<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+<form action="<?= $_SERVER['PHP_SELF'] . '?id=' . $_GET['id'] ?>" method="post">
+    <input type="hidden" name="id" value="<?= $todo['id'] ?>">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input type="text" required value="<?= $todo['title'] ?>" class="form-control <?= array_key_exists('title', $errors) ? 'is-invalid' : '' ?>" id="title" name="title">
