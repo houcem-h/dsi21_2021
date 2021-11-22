@@ -8,12 +8,23 @@ if (!empty($_POST)) {
     $description = checkData($_POST['description']);
     $due_date = checkData($_POST['due_date']);
 
-    $sql = "INSERT INTO todos (title, description, due_date) VALUES (?, ?, ?)";
-    $query = $pdo->prepare($sql);
-    $query->execute([$title, $description, $due_date]);
+    $errors = [];
 
-    header('Location: index.php');
-    exit;
+    if (empty($title)) {
+        $errors['title'] = 'Title is required';
+    }
+    if (empty($description)) {
+        $errors['description'] = 'Description is required';
+    }
+
+    if (empty($errors)) {
+        $sql = "INSERT INTO todos (title, description, due_date) VALUES (?, ?, ?)";
+        $query = $pdo->prepare($sql);
+        $query->execute([$title, $description, $due_date]);
+
+        header('Location: index.php');
+        exit;
+    }
 }
 
 $template = 'add_todo';
