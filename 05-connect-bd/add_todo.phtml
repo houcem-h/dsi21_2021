@@ -10,7 +10,7 @@
 <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" required class="form-control value=" <?= $title ?>" <?= array_key_exists('title', $errors) ? 'is-invalid' : '' ?>" id="title" name="title">
+        <input type="text" required value="<?= $title ?>" class="form-control <?= array_key_exists('title', $errors) ? 'is-invalid' : '' ?>" id="title" name="title">
         <small class="text-danger"><?= array_key_exists('title', $errors) ? $errors['title'] : '' ?></small>
     </div>
     <div class="mb-3">
@@ -20,7 +20,7 @@
     </div>
     <div class="mb-3">
         <label for="due_date" class="form-label">Due date</label>
-        <input type="date" required class="form-control value=" <?= $due_date ?>" <?= array_key_exists('due_date', $errors) ? 'is-invalid' : '' ?>" id="due_date" name="due_date">
+        <input type="date" required value="<?= $due_date ?>" class="form-control <?= array_key_exists('due_date', $errors) ? 'is-invalid' : '' ?>" id="due_date" name="due_date">
         <small class="text-danger"><?= array_key_exists('due_date', $errors) ? $errors['due_date'] : '' ?></small>
     </div>
     <button type="submit" class="btn btn-primary"><i class="bi bi-send-plus"></i> Submit</button>
