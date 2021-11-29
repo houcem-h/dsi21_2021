@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+if (isset($_SESSION['username'])) {
+    header('Location: ./index.php');
+    exit();
+}
+
 include './dbconnect.php';
 
 $errors = [];
@@ -30,7 +36,6 @@ if (isset($_POST['submit'])) {
         $errors[0] = 'Wrong email or password';
         goto show_form;
     } else {
-        session_start();
         $_SESSION['username'] = $user['username'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['avatar'] = $user['avatar'];
