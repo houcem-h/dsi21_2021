@@ -1,12 +1,12 @@
 <?php
 
+$errors = [];
+
 if (isset($_POST['submit'])) {
     // $email = $_POST['email'];
     // $password = $_POST['password'];
     // ou bien
     extract($_POST);
-
-    $errors = [];
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL) == false) {
         $errors['email'] = 'Please enter a valid email';
