@@ -1,5 +1,7 @@
 <?php
 
+include './dbconnect.php';
+
 $errors = [];
 
 if (isset($_POST['submit'])) {
@@ -9,20 +11,31 @@ if (isset($_POST['submit'])) {
     extract($_POST);
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL) == false) {
-        $errors['email'] = 'Please enter a valid email';
+        $errors[0] = 'Please enter a valid email';
         goto show_form;
     }
 
     if (strlen($password) < 6) {
-        $errors['password'] = 'Password must be at least 6 characters';
+        $errors[0] = 'Password must be at least 6 characters';
         goto show_form;
     }
-    // verifier si l'email existe dans la bd
-
-
-
-
-    //
+    $sql = "SELECT * FROM users WHERE email = :email AND password = :password";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        'email' => $email,
+        'password' => $password
+    ]);
+    $user = $stmt->fetch();
+    if ($user == false) {
+        $errors[0] = 'Wrong email or password';
+        goto show_form;
+    } else {
+        session_start();
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['avatar'] = $user['avatar'];
+        header('Location: ./index.php');
+    }
 }
 show_form:
 $template = 'login';
