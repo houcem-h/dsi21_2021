@@ -25,21 +25,25 @@ if (isset($_POST['submit'])) {
         $errors[0] = 'Password must be at least 6 characters';
         goto show_form;
     }
-    $sql = "SELECT * FROM users WHERE email = :email AND password = :password";
+    $sql = "SELECT * FROM users WHERE email = :email";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         'email' => $email,
-        'password' => $password
     ]);
     $user = $stmt->fetch();
     if ($user == false) {
         $errors[0] = 'Wrong email or password';
         goto show_form;
     } else {
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['avatar'] = $user['avatar'];
-        header('Location: ./index.php');
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['avatar'] = $user['avatar'];
+            header('Location: ./index.php');
+        } else {
+            $errors[0] = 'Wrong email or password';
+            goto show_form;
+        }
     }
 }
 show_form:
