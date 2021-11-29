@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: ./login.php');
+    exit();
+}
 include './dbconnect.php';
 
 $query = $pdo->prepare("SELECT * FROM todos ORDER BY complete, due_date");
