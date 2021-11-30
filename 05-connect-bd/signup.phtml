@@ -7,8 +7,12 @@
 <?php endif; ?>
 <main class="form-signin">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
+        <div class="form-floating">
+            <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="Username">
+            <label for="floatingUsername">Username</label>
+        </div>
         <div class="form-floating">
             <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Email address</label>
@@ -17,8 +21,12 @@
             <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign in</button>
-        <p class="mt-5 mb-3">Don't have an account? <a href="signup.php">Sign up here!</a></p>
+        <div class="form-floating">
+            <input type="password" name="confirm_password" class="form-control" id="floatingConfirmPassword" placeholder="Confirm password">
+            <label for="floatingConfirmPassword">Confirm password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign up</button>
+        <p class="mt-5 mb-3">Already have an account? <a href="login.php">Login here!</a></p>
         <p class="mt-5 mb-3 text-muted">&copy; ISET Bizerte-DSI21 - 2021</p>
     </form>
 </main>
