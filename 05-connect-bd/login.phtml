@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="./assets/css/signin.css">
-<?php if (count($errors) > 0) : ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <?= $errors[0] ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php endif; ?>
 <main class="form-signin">
+    <?php if (count($errors) > 0) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= $errors[0] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
