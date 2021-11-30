@@ -30,9 +30,9 @@ if (!empty($_POST)) {
     }
 
     if (empty($errors)) {
-        $sql = "INSERT INTO todos (title, description, due_date) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO todos (title, description, due_date, user_id) VALUES (?, ?, ?, ?)";
         $query = $pdo->prepare($sql);
-        $query->execute([$title, $description, $due_date]);
+        $query->execute([$title, $description, $due_date, $_SESSION['id']]);
 
         header('Location: index.php');
         exit;
