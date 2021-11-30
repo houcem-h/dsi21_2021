@@ -7,8 +7,8 @@ if (!isset($_SESSION['username'])) {
 }
 include './dbconnect.php';
 
-$query = $pdo->prepare("SELECT * FROM todos ORDER BY complete, due_date");
-$query->execute();
+$query = $pdo->prepare("SELECT * FROM todos WHERE user_id= :id ORDER BY complete, due_date");
+$query->execute(['id' => $_SESSION['id']]);
 $todos = $query->fetchAll();
 
 $template = 'index';

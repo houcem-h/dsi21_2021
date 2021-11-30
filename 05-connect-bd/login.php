@@ -36,6 +36,7 @@ if (isset($_POST['submit'])) {
         goto show_form;
     } else {
         if (password_verify($password, $user['password'])) {
+            $_SESSION['id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['avatar'] = $user['avatar'];
