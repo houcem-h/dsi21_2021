@@ -22,4 +22,11 @@ class DataBase extends PDO
             die('Connection failed: ' . $e->getMessage());
         }
     }
+
+    public function launchQuery(string $sql, array $params = [])
+    {
+        $stmt = parent::prepare($sql);
+        $stmt->execute($params);
+        return $stmt;
+    }
 }
