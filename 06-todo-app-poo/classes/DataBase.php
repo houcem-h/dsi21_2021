@@ -17,7 +17,7 @@ class DataBase extends PDO
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             $this->query('SET NAMES UTF8');
-            echo 'Connected to database';
+            // echo 'Connected to database';
         } catch (PDOException $e) {
             die('Connection failed: ' . $e->getMessage());
         }
