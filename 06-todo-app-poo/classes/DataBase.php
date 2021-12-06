@@ -23,7 +23,13 @@ class DataBase extends PDO
         }
     }
 
-    public function launchQuery(string $sql, array $params = [])
+    /**
+     * Prepare and execute a query
+     * @param string $sql the query to be executed
+     * @param array $params the parameters to be bound to the query
+     * @return PDOStatement
+     */
+    public function launchQuery(string $sql, array $params = []): PDOStatement
     {
         $stmt = parent::prepare($sql);
         $stmt->execute($params);
