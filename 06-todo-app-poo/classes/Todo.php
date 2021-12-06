@@ -26,10 +26,10 @@ class Todo
     /**
      * Get a todo by id
      *
-     * @param [int] $id
+     * @param int $id
      * @return array $todo
      */
-    public function get($id)
+    public function get(int $id): array
     {
         $sql = 'SELECT * FROM todos WHERE id = :id';
         $query = $this->pdo->launchQuery($sql, ['id' => $id]);
@@ -44,10 +44,22 @@ class Todo
      * @param string $description
      * @return int $id
      */
-    public function create($title, $due_date, $description)
+    public function create($title, $due_date, $description): int
     {
         $sql = "INSERT INTO todos (title, description, due_date, user_id) VALUES (?, ?, ?, ?)";
         $this->pdo->launchQuery($sql, [$title, $description, $due_date, 1]);
         return $this->pdo->lastInsertId();
+    }
+
+    /**
+     * Delete a todo
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function remove(int $id): void
+    {
+        $sql = 'DELETE FROM todos WHERE id = :id';
+        $this->pdo->launchQuery($sql, ['id' => $id]);
     }
 }
