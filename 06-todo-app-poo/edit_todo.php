@@ -18,9 +18,6 @@ if (!empty($_POST)) {
     $due_date = checkData($_POST['due_date']);
     $id = checkData($_POST['id']);
 
-    // var_dump($_POST);
-    // exit();
-
     if (empty($title)) {
         $errors['title'] = 'Title is required';
     }
@@ -32,20 +29,9 @@ if (!empty($_POST)) {
     }
 
     if (empty($errors)) {
-        $sql = "UPDATE todos 
-                SET
-                    title = :title,
-                    description = :description,
-                    due_date = :due_date
-                WHERE id = :id";
-        $query = $pdo->prepare($sql);
-        $query->bindValue(':title', $title);
-        $query->bindValue(':description', $description);
-        $query->bindValue(':due_date', $due_date);
-        $query->bindValue(':id', $id);
-        $query->execute();
+        $res = $todo->edit($title, $due_date, $description, $id);
 
-        header('Location: index.php');
+        header('Location: todo_details.php?id=' . $id);
         exit;
     }
 }

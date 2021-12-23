@@ -44,11 +44,22 @@ class Todo
      * @param string $description
      * @return int $id
      */
-    public function create($title, $due_date, $description): int
+    public function create(string $title, string $due_date, string $description): int
     {
         $sql = "INSERT INTO todos (title, description, due_date, user_id) VALUES (?, ?, ?, ?)";
         $this->pdo->launchQuery($sql, [$title, $description, $due_date, 1]);
         return $this->pdo->lastInsertId();
+    }
+
+    public function edit(string $title, string $due_date, string $description, int $id)
+    {
+        $sql = "UPDATE todos 
+                SET
+                    title = ?,
+                    description = ?,
+                    due_date = ?
+                WHERE id = ?";
+        $this->pdo->launchQuery($sql, [$title, $description, $due_date, $id]);
     }
 
     /**
