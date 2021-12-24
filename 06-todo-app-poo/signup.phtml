@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="./assets/css/signin.css">
+<main class="form-signin">
+    <?php if (count($errors) > 0) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= $errors[0] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+        <div class="form-floating">
+            <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="Username">
+            <label for="floatingUsername">Username</label>
+        </div>
+        <div class="form-floating">
+            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" name="confirm_password" class="form-control" id="floatingConfirmPassword" placeholder="Confirm password">
+            <label for="floatingConfirmPassword">Confirm password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign up</button>
+        <p class="mt-5 mb-3">Already have an account? <a href="login.php">Login here!</a></p>
+        <p class="mt-5 mb-3 text-muted">&copy; ISET Bizerte-DSI21 - 2021</p>
+    </form>
+</main>
