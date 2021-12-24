@@ -39,4 +39,23 @@ class User
             }
         }
     }
+
+    /**
+     * Sign up user
+     *
+     * @param string $username
+     * @param string $email
+     * @param string $password
+     * @return void
+     */
+    public function signup(string $username, string $email, string $password): int
+    {
+        $sql = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+        $this->pdo->launchQuery($sql, [
+            'username' => $username,
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+        ]);
+        return $this->pdo->lastInsertId();
+    }
 }
