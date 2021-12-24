@@ -11,6 +11,13 @@ class User
         $this->pdo = new DataBase();
     }
 
+    /**
+     * Login user
+     *
+     * @param string $email
+     * @param string $password
+     * @return boolean
+     */
     public function login(string $email, string $password): bool
     {
         $sql = "SELECT * FROM users WHERE email = :email";
