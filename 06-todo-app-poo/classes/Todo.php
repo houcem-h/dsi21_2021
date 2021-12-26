@@ -18,8 +18,8 @@ class Todo
      */
     public function getAll(): array
     {
-        $sql = 'SELECT * FROM todos ORDER BY complete, due_date';
-        $query = $this->pdo->launchQuery($sql);
+        $sql = 'SELECT * FROM todos WHERE user_id= :id ORDER BY complete, due_date';
+        $query = $this->pdo->launchQuery($sql, ['id' => $_SESSION['id']]);
         return $query->fetchAll();
     }
 
