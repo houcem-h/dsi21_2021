@@ -19,6 +19,25 @@ class File
         $this->fileTmpName = $uploadedFile['tmp_name'];
     }
 
+    /**
+     * Check if file is an image
+     *
+     * @return boolean
+     */
+    public function isImage(): bool
+    {
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        if (!in_array($this->fileExtension, $allowedExtensions)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Upload file
+     *
+     * @return boolean
+     */
     public function uploadFile(): bool
     {
         $this->fileName = sha1(rand()) . '.' . $this->fileExtension;
@@ -28,6 +47,11 @@ class File
         return true;
     }
 
+    /**
+     * File name getter
+     *
+     * @return string
+     */
     public function getFileName(): string
     {
         return $this->fileName;

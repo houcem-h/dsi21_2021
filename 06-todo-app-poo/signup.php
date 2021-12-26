@@ -38,6 +38,10 @@ if (isset($_POST['submit'])) {
         $errors[0] = 'Passwords do not match';
         goto show_form;
     }
+    if ($file->isImage() == false) {
+        $errors[0] = 'Please upload an image';
+        goto show_form;
+    }
 
     $uploadFile = $file->uploadFile();
     if ($uploadFile == false) {
