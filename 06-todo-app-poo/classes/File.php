@@ -34,6 +34,19 @@ class File
     }
 
     /**
+     * Check if file size is less than 2MB
+     *
+     * @return boolean
+     */
+    public function sizeFits(): bool
+    {
+        if ($this->fileSize > 2000000) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Upload file
      *
      * @return boolean

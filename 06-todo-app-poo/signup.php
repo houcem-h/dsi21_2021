@@ -42,6 +42,10 @@ if (isset($_POST['submit'])) {
         $errors[0] = 'Please upload an image';
         goto show_form;
     }
+    if ($file->sizeFits() == false) {
+        $errors[0] = 'Please upload an image smaller than 2MB';
+        goto show_form;
+    }
 
     $uploadFile = $file->uploadFile();
     if ($uploadFile == false) {
