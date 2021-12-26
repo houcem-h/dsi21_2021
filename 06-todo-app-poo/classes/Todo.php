@@ -51,7 +51,16 @@ class Todo
         return $this->pdo->lastInsertId();
     }
 
-    public function edit(string $title, string $due_date, string $description, int $id)
+    /**
+     * Update a todo
+     * 
+     * @param string $title
+     * @param string $due_date
+     * @param string $description
+     * @param int $id
+     * @return void
+     */
+    public function edit(string $title, string $due_date, string $description, int $id): void
     {
         $sql = "UPDATE todos 
                 SET
