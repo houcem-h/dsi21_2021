@@ -6,7 +6,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
         <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
         <div class="form-floating">
@@ -24,6 +24,10 @@
         <div class="form-floating">
             <input type="password" name="confirm_password" class="form-control" id="floatingConfirmPassword" placeholder="Confirm password">
             <label for="floatingConfirmPassword">Confirm password</label>
+        </div>
+        <div class="form-floating">
+            <input type="file" name="avatar" class="form-control" id="floatingAvatar" placeholder="Avatar">
+            <label for="floatingAvatar">Avatar</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign up</button>
         <p class="mt-5 mb-3">Already have an account? <a href="login.php">Login here!</a></p>
