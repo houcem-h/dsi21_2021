@@ -48,13 +48,14 @@ class User
      * @param string $password
      * @return void
      */
-    public function signup(string $username, string $email, string $password): int
+    public function signup(string $username, string $email, string $password, string $avatar): int
     {
-        $sql = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+        $sql = "INSERT INTO users (username, email, password, avatar) VALUES (:username, :email, :password, :avatar)";
         $this->pdo->launchQuery($sql, [
             'username' => $username,
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT),
+            'avatar' => $avatar,
         ]);
         return $this->pdo->lastInsertId();
     }
