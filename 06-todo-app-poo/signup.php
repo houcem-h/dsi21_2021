@@ -6,11 +6,17 @@ if (isset($_SESSION['username'])) {
     exit();
 }
 include './classes/User.php';
+include './classes/File.php';
 
 $errors = [];
 
 if (isset($_POST['submit'])) {
     extract($_POST);
+    // echo '<pre>';
+    // print_r(sha1(rand()));
+    // echo '</pre>';
+    // exit;
+    $file = new File('./storage/avatars/', $_FILES['avatar']);
 
     if (strlen(trim($username)) < 3) {
         $errors[0] = 'Username must be at least 3 characters';
@@ -32,8 +38,16 @@ if (isset($_POST['submit'])) {
         $errors[0] = 'Passwords do not match';
         goto show_form;
     }
+
+    $uploadFile = $file->uploadFile();
+    if ($uploadFile == false) {
+        $errors[0] = 'File upload failed';
+        goto show_form;
+    }
+    $avatar = './storage/avatars/' . $file->getFileName();
+
     $user = new User();
-    $signup = $user->signup($username, $email, $password);
+    $signup = $user->signup($username, $email, $password, $avatar);
     if (is_int($signup)) {
         header('Location: ./login.php');
         exit();
